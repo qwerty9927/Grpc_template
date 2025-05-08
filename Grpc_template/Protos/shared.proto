@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "Grpc_template.Protos";
+import "google/protobuf/any.proto";
+
+package shared;
+
+message IdGrpcRequest {
+  string id = 1;
+}
+
+message SearchGrpcRequest {
+  string keyWord = 1;
+  int32 pageSize = 2;
+  int32 pageIndex = 3;
+  string sortOrder = 4;
+}
+
+message GrpcResponse {
+  google.protobuf.Any data = 1;
+}
+
+message GrpcIterableResponse {
+  repeated google.protobuf.Any data = 1;
+}
+
+message GrpcPagingResponse {
+  PagingGrpcResponse data = 1;
+}
+
+message PagingGrpcResponse {
+  repeated google.protobuf.Any records = 1;
+  int32 totalRecord = 2;
+}
